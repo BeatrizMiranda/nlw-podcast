@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { TEpisodes, TPodcastItem } from "../../typing/homeTypes";
 
@@ -9,7 +10,9 @@ const PodcastItem = ({ ep }: TPodcastItem) => (
       <Image width={120} height={120} objectFit="cover" alt={ep.title} src={ep.thumbnail} />
     </td>
     <td>
-      <a href="">{ep.title}</a>
+      <Link href={`/episodes/${ep.id}`}>
+        <a>{ep.title}</a>
+      </Link>
     </td>
     <td>{ep.members}</td>
     <td style={{ whiteSpace: "nowrap" }}>{ep.publishedAt}</td>
@@ -28,12 +31,14 @@ const PodcastList = ({ restEpisodes }: { restEpisodes: TEpisodes[] }) => {
   return (
     <table cellSpacing={0}>
       <thead>
-        <th></th>
-        <th>Podcast</th>
-        <th>Integrantes</th>
-        <th>Data</th>
-        <th>Duração</th>
-        <th></th>
+        <tr>
+          <th></th>
+          <th>Podcast</th>
+          <th>Integrantes</th>
+          <th>Data</th>
+          <th>Duração</th>
+          <th></th>
+        </tr>
       </thead>
       <tbody>{renderAllPodcast()}</tbody>
     </table>

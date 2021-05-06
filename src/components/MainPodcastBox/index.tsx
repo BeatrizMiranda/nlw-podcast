@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import styles from "../../styles/pages/home.module.scss";
 import { TEpisodes } from "../../typing/homeTypes";
+import Link from "next/link";
 
 function MainPodcastBox({ episode }: { episode: TEpisodes }) {
   return (
@@ -14,7 +15,9 @@ function MainPodcastBox({ episode }: { episode: TEpisodes }) {
         src={episode.thumbnail}
       />
       <div className={styles.episodesDetails}>
-        <a href="">{episode.title}</a>
+        <Link href={`/episodes/${episode.id}`}>
+          <a>{episode.title}</a>
+        </Link>
         <p>{episode.members}</p>
         <span>{episode.publishedAt}</span>
         <span>{episode.durationFormatted}</span>
